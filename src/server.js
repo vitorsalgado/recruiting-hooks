@@ -10,11 +10,6 @@ const Slack = require('./utils/slack')
 const GitHubUtils = require('./utils/github')
 const HooksConfig = JSON.parse(Config.hooks.config)
 
-if (!HooksConfig.hooks || HooksConfig.hooks.length === 0) {
-  Logger.error('No Github WebHook configurations found! Exiting application ...')
-  process.exit(1)
-}
-
 const WebHookServer = Express()
 
 WebHookServer.use(BodyParser.json())
