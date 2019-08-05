@@ -18,6 +18,7 @@ module.exports = Joi.object(
     NODE_ENV: Joi.string().allow('development', 'test', 'production').default('production'),
 
     PORT: Joi.number().default(3000),
+    HOST: Joi.string().default('0.0.0.0'),
     SERVER_CLUSTER_INSTANCES: Joi.number().default(0),
     SERVER_MAX_MEMORY_BEFORE_RESTART: Joi.string().default('1G'),
 

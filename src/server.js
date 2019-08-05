@@ -39,7 +39,7 @@ HooksConfig.hooks
 
 module.exports.start = () =>
   WebHookServer
-    .listen(Config.application.port,
+    .listen(Config.application.port, Config.application.host,
       () =>
         Logger.info(`WebHook Server is online on: ${Config.application.port}`))
 

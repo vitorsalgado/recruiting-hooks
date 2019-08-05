@@ -11,6 +11,7 @@ module.exports = {
 
   application: {
     port: EnvVars.PORT,
+    host: EnvVars.HOST,
     instances: EnvVars.SERVER_CLUSTER_INSTANCES,
     maxMemoryRestart: EnvVars.SERVER_MAX_MEMORY_BEFORE_RESTART
   },

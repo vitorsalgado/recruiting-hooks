@@ -7,4 +7,5 @@ module.exports = Pino(
     crlf: true,
     safe: true,
     timestamp: true
-  })
+  },
+  Pino.extreme())
