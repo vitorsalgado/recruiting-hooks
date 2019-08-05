@@ -30,7 +30,7 @@ HooksConfig.hooks
         return Promise
           .all(
             [
-              GitHubUtils.addLabel(pr),
+              GitHubUtils.addIssueLabel(pr),
               Slack.sendMessage(hook, pr)
             ]
           )
