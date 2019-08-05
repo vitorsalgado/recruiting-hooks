@@ -21,11 +21,8 @@ module.exports = Joi.object(
     SERVER_CLUSTER_INSTANCES: Joi.number().default(0),
     SERVER_MAX_MEMORY_BEFORE_RESTART: Joi.string().default('1G'),
 
-    GITHUB_AUTH_TOKEN: Joi.string(),
-    SLACK_WEBHOOK: Joi.string(),
-
-    JAVA_REPO: Joi.string(),
-    JAVA_LABELS: Joi.array().items(Joi.string()).single()
+    GITHUB_AUTH_TOKEN: Joi.string().required(),
+    HOOKS_CONFIG: Joi.string().required()
   })
   .unknown(true)
   .options({ abortEarly: false })

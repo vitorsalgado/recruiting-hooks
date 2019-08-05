@@ -1,16 +1,11 @@
 'use strict'
 
 const Joi = require('joi')
-
-const Package = require('../../package.json')
 const EnvSchema = require('./env.schema')
 
 const EnvVars = Joi.attempt(process.env, EnvSchema)
 
 module.exports = {
-  env: EnvVars.NODE_ENV,
-  version: Package.version,
-
   isProduction: EnvVars.NODE_ENV === 'production',
   isTest: EnvVars.NODE_ENV === 'test',
 
@@ -21,17 +16,10 @@ module.exports = {
   },
 
   github: {
-    token: EnvSchema.GITHUB_AUTH_TOKEN
-  },
-
-  slack: {
-    hook: EnvSchema.SLACK_WEBHOOK
+    token: EnvVars.GITHUB_AUTH_TOKEN
   },
 
   hooks: {
-    java: {
-      repo: EnvSchema.JAVA_REPO,
-      labels: EnvSchema.JAVA_LABELS
-    }
+    config: EnvVars.HOOKS_CONFIG
   }
 }

@@ -1,0 +1,12 @@
+{
+  "hooks": [
+    {
+      "name": "<WEB HOOK NAME>",
+      "path": "<APPLICATION ROUTE TO LISTEN TO THE INCOMING WEBHOOK. MUST BE UNIQUE>",
+      "title": "<NOTIFICATION TITLE>",
+      "repository": "<REPOSITORY PATH. EG.: vitorsalgado/backend-code-challenge-proposal>",
+      "default_labels": "PR LABEL(S) TO BE ADDED. EG.: pending review",
+      "slack_webhook": "<SLACK WEB HOOK HERE>"
+    }
+  ]
+}

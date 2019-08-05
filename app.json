@@ -1,0 +1,18 @@
+{
+  "name": "Recruiting Hooks",
+  "description": "Recruiting Notification and Utilities Web Hooks Listener",
+  "keywords": ["nodejs", "recruiting", "javascript", "github-webhooks"],
+  "success_url": "/health",
+  "stack": "container",
+  "env": {
+    "NODE_ENV": "production",
+    "GITHUB_AUTH_TOKEN": {
+      "description": "GitHub API Token",
+      "required": true
+    },
+    "HOOKS_CONFIG": {
+      "description": "WebHooks JSON configuration",
+      "required": true
+    }
+  }
+}
