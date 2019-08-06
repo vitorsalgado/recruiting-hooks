@@ -7,4 +7,4 @@ const GithubApi = Github.client(Config.github.token)
 module.exports.addIssueLabel = (hook, pr) =>
   GithubApi
     .issue(hook.repository, pr.number)
-    .addLabelsAsync(hook.default_labels)
+    .addLabelsAsync([].concat(hook.default_labels))

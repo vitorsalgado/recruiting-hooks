@@ -20,7 +20,7 @@ module.exports.sendMessage = (hook, pr) =>
             title: `Pull Request from ${pr.sender.login}`,
             title_link: pr.pull_request.html_url,
             mrkdwn_in: ['text', 'pretext'],
-            text: `Please review this as soon possible so we can provide a fast feedback to the candidate.\n*Title*: ${pr.pull_request.title}\n*Branch*: ${pr.pull_request.head.repo.default_branch}\n*Clone*: \`git clone ${pr.pull_request.head.repo.ssh_url}\``
+            text: `Please, review this as soon as possible so we can provide a fast feedback to the candidate.\n*Title*: ${pr.pull_request.title}\n*Branch*: ${pr.pull_request.head.repo.default_branch}\n*Clone*: \`git clone ${pr.pull_request.head.repo.ssh_url}\``
           }
         ]
       }
