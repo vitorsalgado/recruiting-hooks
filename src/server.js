@@ -8,7 +8,6 @@ const Config = require('./config')
 const Logger = require('./utils/logger')
 const Slack = require('./utils/slack')
 const GitHubUtils = require('./utils/github')
-const HooksConfig = JSON.parse(Config.hooks.config)
 
 const WebHookServer = Express()
 
@@ -17,25 +16,26 @@ WebHookServer.use(PinoExpress)
 
 WebHookServer.get('/health', (req, res) => res.json({ live: true }).status(200))
 
-HooksConfig.hooks
-  .forEach(hook =>
-    WebHookServer
-      .post(hook.path, (req, res) => {
-        const pr = req.body
+module.exports.prepare = () =>
+  JSON.parse(Config.hooks.config).hooks
+    .forEach(hook =>
+      WebHookServer
+        .post(hook.path, (req, res) => {
+          const pr = req.body
 
-        if (!['opened', 'reopened'].includes(pr.action.toLowerCase())) {
-          return res.sendStatus(204)
-        }
+          if (!['opened', 'reopened'].includes(pr.action.toLowerCase())) {
+            return res.sendStatus(204)
+          }
 
-        return Promise
-          .all(
-            [
-              GitHubUtils.addIssueLabel(pr),
-              Slack.sendMessage(hook, pr)
-            ]
-          )
-          .then(() => res.sendStatus(204))
-      }))
+          return Promise
+            .all(
+              [
+                GitHubUtils.addIssueLabel(hook, pr),
+                Slack.sendMessage(hook, pr)
+              ]
+            )
+            .then(() => res.sendStatus(204))
+        }))
 
 module.exports.start = () =>
   WebHookServer

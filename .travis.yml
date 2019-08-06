@@ -6,8 +6,6 @@ services:
   - docker
 
 script:
-  - npm run lint
-  - npm test
-
+  - make check
   - make docker-build
   - make docker-cleanup

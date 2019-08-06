@@ -4,6 +4,11 @@ DOCKER_IMAGE := $(PROJECT)
 BUILD := $$TRAVIS_BUILD_NUMBER
 
 
+check:
+	npm run lint && \
+	npm test
+
+
 # docker
 # ##################################################################################################
 
