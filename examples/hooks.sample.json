@@ -6,7 +6,8 @@
       "title": "<NOTIFICATION TITLE>",
       "repository": "<REPOSITORY PATH. EG.: vitorsalgado/backend-code-challenge-proposal>",
       "default_labels": ["PR LABEL(S) TO BE ADDED. EG.: [pending review, challenge]"],
-      "slack_webhook": "<SLACK WEB HOOK HERE>"
+      "slack_webhook": "<SLACK WEB HOOK HERE>",
+      "skip_users": ["GITHUB USER TO SKIP"]
     }
   ]
 }
