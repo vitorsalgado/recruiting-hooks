@@ -4,20 +4,19 @@ const Request = require('supertest')
 const Nock = require('nock')
 const Config = require('./config')
 const Server = require('./server')
-
-const HooksStub = require('./__stubs/hooks.sample')
-const PrStub = require('./__stubs/pr')
+const Stubs = require('./__stubs')
 
 describe('WebHook Server', () => {
   beforeAll(() => {
     Nock.disableNetConnect()
     Nock.enableNetConnect('127.0.0.1')
-    Config.hooks.config = JSON.stringify(HooksStub)
+    Config.hooks.config = JSON.stringify(Stubs.Hooks)
     Server.prepare()
   })
 
   afterAll(() => {
     Nock.enableNetConnect()
+    expect(Nock.isDone()).toBeTruthy()
     Nock.cleanAll()
   })
 
@@ -37,7 +36,13 @@ describe('WebHook Server', () => {
 
     return Request(Server.listener())
       .post('/java/prs')
-      .send(PrStub)
+      .send(Stubs.Pr1)
       .expect(204)
   })
+
+  it('should skip all processes when PR User is in skip list from configurations', () =>
+    Request(Server.listener())
+      .post('/java/prs')
+      .send(Stubs.Pr2)
+      .expect(204))
 })

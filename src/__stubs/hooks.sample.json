@@ -6,7 +6,8 @@
       "title": "Notification Title",
       "repository": "vitorsalgado/backend-code-challenge-proposal",
       "default_labels": "pending review",
-      "slack_webhook": "https://test-slack-webhook"
+      "slack_webhook": "https://test-slack-webhook",
+      "skip_users": ["user1", "user2"]
     }
   ]
 }

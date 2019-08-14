@@ -23,6 +23,10 @@ module.exports.prepare = () =>
         .post(hook.path, (req, res) => {
           const pr = req.body
 
+          if ((hook.skip_users || []).includes(pr.sender.login.toLowerCase())) {
+            return res.sendStatus(204)
+          }
+
           if (!['opened', 'reopened'].includes(pr.action.toLowerCase())) {
             return res.sendStatus(204)
           }
